@@ -6,11 +6,11 @@ The idea is implemented using Graph and Heap data structures. The graph has node
 By using different algorithms like Dijkstra, Breadth-First Search, and Depth-First Search, the shortest path between the source and destination is determined. The total distance is calculated, and the optimal route is displayed.
 
 # Requirements
-1.Dijkstra's Algorithm: C++ Program for Dijkstra's Shortest Path Algorithm
+1.Dijkstra's Algorithm: https://www.geeksforgeeks.org/c-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/
 
-2.Depth-First Search: Depth-First Search (DFS) for a Graph
+2.Depth-First Search:  https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
 
-3.Breadth-First Search: Breadth-First Search (BFS) for a Graph
+3.Breadth-First Search:  https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
 
 
 
