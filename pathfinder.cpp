@@ -56,7 +56,7 @@ void create_map(){
     connect_edge("GYM","Health Centre",4);
     connect_edge("OAT","Health Centre",6);
     connect_edge("GYM","PE Ground",3);
-    connect_edge("Hall 5","PE Gorund",5);
+    connect_edge("Hall 5","PE Ground",5);
     connect_edge("Hall 5","GYM",4);
     connect_edge("Hall 5","Library",6);
     connect_edge("Library","DOAA Canteen",3);
@@ -136,7 +136,9 @@ int shortest_path(int source, int destination){
 void bfs(int source, vector<int> parent[]){
     vector<int> dist(n,1e9);
     queue<int> q;
-    parent[source] = {-1};
+    parent[source].clear();
+    parent[source].push_back(-1);
+
     dist[source] = 0;
     q.push(source);
 
@@ -162,19 +164,17 @@ void bfs(int source, vector<int> parent[]){
     }
 }
 
-void find_path(vector<int> parent[], vector<vector<int>> paths, vector<int> path, int destination){
+void find_path(vector<int> parent[], vector<vector<int>> &paths, vector<int> path, int destination){
     if(destination == -1){
         paths.push_back(path);
         return;
     }
-
+    path.push_back(destination);  // Add the destination to the path
     for(auto it : parent[destination]){
-        path.push_back(it);
-
-        find_path(parent,paths,path,it);
-        path.pop_back();
+        find_path(parent, paths, path, it);
     }
 }
+
 
 void print_path(int source, int destination){
     vector<vector<int>>paths;
@@ -184,15 +184,15 @@ void print_path(int source, int destination){
     bfs(source, parent);
     find_path(parent, paths, path, destination);
 
-    for(auto it : paths){
-        reverse(it.begin(), it.end());
-
-        for(auto st : it){
-            cout << index_place[st] << " -->  ";
-        }
-        cout << endl;
-        break;
+    if (!paths.empty()) {
+    reverse(paths[0].begin(), paths[0].end());
+    for(int i=0; i<paths[0].size()-1; i++){
+        cout << index_place[paths[0][i]] << " --> ";
     }
+    
+    cout << index_place[paths[0][paths[0].size()-1]] << endl;
+}
+
 }
 
 
